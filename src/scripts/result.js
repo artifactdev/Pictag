@@ -4,12 +4,12 @@ imageURL;
 browser.storage.local.get('url', function (url) {
   imageURL = url.url;
   browser.storage.sync.get(null, setStoredsettings);
-
 });
 
 
 function setStoredsettings(settings) {
   storedSettings = settings;
+  window.parent.postMessage("Hello From IFrame", "*");
   getHashtags(imageURL);
 }
 
@@ -66,6 +66,7 @@ var addListeners = function () {
 var copyTags = function () {
   document.getElementById('hashit-tags').select();
   document.execCommand("Copy");
+  window.parent.postMessage("Hello From IFrame", "*");
 }
 
 var appendTags = function (tags) {

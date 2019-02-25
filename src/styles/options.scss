@@ -1,0 +1,36 @@
+@import "variables";
+@import "modules/reset";
+@import "modules/variables";
+@import "modules/grid";
+@import "modules/layout";
+@import "modules/utilities";
+@import "modules/info";
+
+.toolbar {
+  background: $light-blue;
+  color: $white;
+}
+
+.option {
+  margin-bottom: 15px;
+  label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+  }
+
+  input {
+    border: 1px solid lighten($blue-grey, 30);
+    padding: 12px;
+    width: 100%;
+    font-size: 18px;
+
+
+    &:focus,
+    &:hover {
+      border-color: $blue-grey;
+    }
+  }
+}
+
+

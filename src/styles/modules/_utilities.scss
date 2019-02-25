@@ -1,0 +1,21 @@
+.text-muted {
+  color: $text-secondary;
+}
+
+.text-center {
+  text-align: center;
+}
+
+a {
+  color: $teal;
+  font-weight: bold;
+}
+
+.btn {
+  padding: 15px;
+  background: $teal;
+  color: $white;
+  text-align: center;
+  font-size: 1.5rem;
+  width: 100%;
+}

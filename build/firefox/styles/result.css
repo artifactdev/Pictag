@@ -1,0 +1,166 @@
+#hashitmodal {
+  display: none;
+  position: absolute;
+  width: 500px;
+  max-width: 100vw;
+  background: white none repeat scroll 0% 0%;
+  top: 150px;
+  left: calc(50% - 250px);
+  z-index: 10000;
+  padding: 10px 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#hashitmodal html, #hashitmodal body {
+  box-sizing: border-box;
+}
+
+#hashitmodal html:before, #hashitmodal html:after, #hashitmodal body:before, #hashitmodal body:after {
+  box-sizing: border-box;
+}
+
+#hashitmodal body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-size: 16px;
+  color: #111111;
+  font-weight: normal;
+}
+
+#hashitmodal h1, #hashitmodal h2, #hashitmodal h3, #hashitmodal h4, #hashitmodal h5, #hashitmodal h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0;
+  padding: 0;
+}
+
+#hashitmodal h1 {
+  font-size: 1.75em;
+}
+
+#hashitmodal h2 {
+  font-size: 1.5em;
+}
+
+#hashitmodal h3 {
+  font-size: 1.25em;
+}
+
+#hashitmodal h4 {
+  font-size: 1.10em;
+}
+
+#hashitmodal h5 {
+  font-size: 1em;
+}
+
+#hashitmodal h6 {
+  font-size: .85em;
+}
+
+#hashitmodal nav {
+  margin: 1em 0;
+}
+
+#hashitmodal nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#hashitmodal nav ul li {
+  display: inline-block;
+  margin-right: 1em;
+  margin-bottom: .25em;
+}
+
+#hashitmodal a {
+  text-decoration: none;
+  color: #4990E2;
+}
+
+#hashitmodal a:hover, #hashitmodal a:focus {
+  color: #2e7fde;
+}
+
+#hashitmodal ul, #hashitmodal ol {
+  margin-top: 0;
+  padding-top: 0;
+  padding-left: 2.5em;
+}
+
+#hashitmodal p {
+  margin: 1em 0;
+  hyphens: auto;
+}
+
+#hashitmodal p.lead {
+  font-size: 1.2em;
+}
+
+#hashitmodal p:first-child {
+  margin-top: 0;
+}
+
+#hashitmodal p:last-child {
+  margin-bottom: 0;
+}
+
+#hashitmodal p + ul, #hashitmodal p + ol {
+  margin-top: -.75em;
+}
+
+#hashitmodal dd {
+  margin-bottom: 1em;
+  margin-left: 0;
+  padding-left: 2.5em;
+}
+
+#hashitmodal dt {
+  font-weight: 700;
+}
+
+#hashitmodal blockquote {
+  margin: 0;
+  padding-left: 2.5em;
+}
+
+#hashitmodal.show {
+  display: block;
+}
+
+#hashitmodal textarea {
+  border-radius: 0;
+  background: #ededed;
+  color: #23224e;
+  margin-top: 10px;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  margin-bottom: 0;
+}
+
+#hashitClose {
+  width: 24px;
+  height: 24px;
+  color: #a1a1a1;
+  position: absolute;
+  right: 10px;
+}
+
+#hashitClose:hover {
+  color: #23224e;
+}
+
+#hashitCopy {
+  width: 100%;
+  padding: 8px;
+  font-size: 24px;
+  font-family: Verdana;
+  background: #0e9582;
+  color: white;
+  border: 0;
+}
+
+#hashitCopy:hover {
+  background: #0f6b5e;
+}

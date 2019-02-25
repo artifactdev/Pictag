@@ -1,0 +1,49 @@
+{
+    "name": "__MSG_appName__",
+    "version": "0.0.2",
+    "manifest_version": 2,
+    "description": "__MSG_appDescription__",
+    "icons": {
+        "16": "icons/icon-16.png",
+        "128": "icons/icon-128.png"
+    },
+    "default_locale": "en",
+    "background": {
+        "scripts": [
+            "scripts/livereload.js",
+            "scripts/background.js"
+        ]
+    },
+    "options_ui": {
+        "page": "options.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ],
+            "css": [
+                "styles/result.css"
+            ],
+            "run_at": "document_end",
+            "all_frames": true
+        }
+    ],
+    "web_accessible_resources": [
+        "results.html"
+    ],
+    "permissions": [
+        "contextMenus",
+        "activeTab",
+        "tabs",
+        "storage",
+        "webRequest",
+        "<all_urls>"
+    ],
+    "applications": {
+        "gecko": {
+            "id": "my-app-id@mozilla.org"
+        }
+    }
+}

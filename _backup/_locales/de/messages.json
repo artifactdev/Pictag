@@ -1,0 +1,9 @@
+{
+	"extensionName": {
+		"message": "Pictag"
+	},
+
+	"extensionDescription": {
+		"message": "Fügt eine Option zum Kontextmenü hinzu und liefert passende Hashtags zu einem Bild."
+	}
+}

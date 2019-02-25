@@ -1,32 +1,50 @@
 
 browser.storage.local.get('tags', function (items) {
-  console.log(items)
+  console.log('TAGS:', items)
   createModal(items)
   browser.storage.local.remove('tags');
 });
 
 var createModal = function(tags){
+  console.log('create modal passed')
   modalTemplate(tags.tags);
 }
 
 var modalTemplate = function(tags) {
-  var httpRequest = new XMLHttpRequest();
-  httpRequest.onload = function(data) {
-      httpRequest.onload = null;
+  console.log('modal template entered')
+  var templateURL = browser.extension.getURL('/result.html');
+  var templateRequest = new XMLHttpRequest();
+  templateRequest.open("GET", templateURL, false);
+  templateRequest.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var template = document.createElement('template');
+        template.innerHTML = this.responseText;
+        console.log(this.respponseText)
+        deleteModal();
+        var element = template.content.firstChild;
+        console.log(element);
+        document.body.appendChild(element);
+        appendTags(tags);
+        addListeners();
+      } else if (this.readySate == 4 && this.status !== 200) {
+        console.log("Error", templateRequest.statusText);
+      }
+  };
+  templateRequest.send();
 
-      var template = document.createElement('template');
-      template.innerHTML = data.target.responseText;
-
-      deleteModal();
-      var element = template.content.firstChild;
-      document.body.appendChild(element);
-      appendTags(tags);
-      addListeners();
-  }
-
-  httpRequest.open('GET', browser.extension.getURL('/results.html'));
-  httpRequest.send();
 }
+
+var appendIframe = function() {
+  var iframe = document.createElement('iframe');
+  iframe.setAttribute('src', browser.extension.getURL('/result.html'));
+  iframe.setAttribute('width', '500px');
+  iframe.setAttribute('height', '500px');
+  iframe.setAttribute('id', 'hashitmodal')
+  iframe.classList.add('show')
+
+  document.body.appendChild(iframe);
+}
+
 
 var deleteModal = function() {
   if(document.getElementById('hashitmodal') !== null) {

@@ -1,5 +1,3 @@
-import ext from "./utils/ext";
-
 /** Utility Functions **/
 var $ = document.querySelector.bind(document);
 var $$ = document.querySelectorAll.bind(document);
@@ -14,7 +12,7 @@ saveOptions.onclick = () => {
 		apiSecret: $('#apiSecret').value
 	};
 
-    ext.storage.sync.set(storedSettings);
+    browser.storage.sync.set(storedSettings);
 };
 
 function updateUI(storedSettings) {
@@ -26,4 +24,4 @@ function updateUI(storedSettings) {
 }
 
 /* On opening the options page, fetch stored settings and update the UI with them. */
-ext.storage.sync.get(null, updateUI);
+browser.storage.sync.get(null, updateUI);

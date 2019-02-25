@@ -1,11 +1,8 @@
-import ext from "./utils/ext";
-
-
 // Set up context menu for images, always get whole storage
 function createContextMenu() {
-	const title =  'Get Hashtags'; //ext.i18n.getMessage('contextMenuTitle')
+	var title =  'Get Hashtags'; //browser.i18n.getMessage('contextMenuTitle')
 
-	ext.contextMenus.create({
+	browser.contextMenus.create({
         id: 'getHash',
         title,
         contexts: ['image'],
@@ -13,7 +10,7 @@ function createContextMenu() {
 }
 
 /* Default settings. If there is nothing in storage, use these values. */
-const defaultSettings = {
+var defaultSettings = {
 	apiKey: '',
 	apiSecret: ''
 };
@@ -27,35 +24,35 @@ function checkStoredSettings(storedSettings) {
 function getHashtags(info, storedSettings) {
     var imageURL = info.srcUrl;
 
-    var request = require('request')
+    if ( !window.XMLHttpRequest ) return;
 
-    var auth = btoa(storedSettings.apiKey + ":" + storedSettings.apiSecret);
-    request('https://api.imagga.com/v2/tags?image_url='+encodeURIComponent(imageURL), {
-      method: "GET",
-      headers: {
-        Authorization: 'Basic ' + auth,
-        'Content-Type': 'application/json'
-      }
-    }, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-          buildTagArray(body);
-        } else {
-          console.log('error', error, response && response.statusCode);
+	// Create new request
+    var request = new XMLHttpRequest();
+
+	// Setup callbacks
+	request.onreadystatechange = function () {
+
+		// If the request is compvare
+		if(request.readyState === 4 && request.status === 200) {
+            buildTagArray(request.responseText);
         }
-    });
 
+	};
 
-
+    // Get the HTML
+    request.open( 'GET', 'https://api.imagga.com/v2/tags?image_url='+encodeURIComponent(imageURL) );
+    request.setRequestHeader("Authorization", "Basic " + btoa(storedSettings.apiKey + ":" + storedSettings.apiSecret));
+	request.send();
 }
 
 function buildTagArray(data) {
-    const dataObject = JSON.parse(data);
-    const dataTags = dataObject.result.tags;
-    let tags = [];
+    var dataObject = JSON.parse(data);
+    var dataTags = dataObject.result.tags;
+    var tags = [];
 
-    for (let index = 0; index < dataTags.length; index++) {
+    for (var index = 0; index < dataTags.length; index++) {
         if (index === 30) { break; }
-        let tagObject = dataTags[index];
+        var tagObject = dataTags[index];
 
         tags.push('#'+tagObject.tag.en);
     }
@@ -90,15 +87,15 @@ function logURL(requestDetails) {
     console.log("Loading: " + requestDetails.url);
 }
 
-ext.webRequest.onBeforeRequest.addListener(
+browser.webRequest.onBeforeRequest.addListener(
   logURL,
   {urls: ["<all_urls>"]}
 );
 
 /* Setup context menu */
-ext.storage.sync.get(null, checkStoredSettings);
+browser.storage.sync.get(null, checkStoredSettings);
 
 /* On click, fetch stored settings and reverse search. */
-ext.contextMenus.onClicked.addListener((info, tab) => {
-	ext.storage.sync.get(null, getHashtags.bind(null, info));
+browser.contextMenus.onClicked.addListener((info, tab) => {
+	browser.storage.sync.get(null, getHashtags.bind(null, info));
 });

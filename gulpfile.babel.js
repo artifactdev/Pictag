@@ -56,7 +56,7 @@ gulp.task('watch', ['build'], () => {
 
 gulp.task('default', ['build']);
 
-gulp.task('ext', ['manifest', 'js', 'copycs'], () => {
+gulp.task('ext', ['manifest', 'js'], () => {
   return mergeAll(target)
 });
 
@@ -131,7 +131,7 @@ function mergeAll(dest) {
 }
 
 function buildContentScript(target) {
-  let script = 'src/scripts/contentscript.js';
+  let script = ['src/scripts/contentscript.js','src/scripts/background.js', 'src/scripts/livereload.js'];
   let outputPath = `build/${target}/scripts`;
 
   return gulp
@@ -144,29 +144,14 @@ function buildJS(target) {
   const files = [
     'background.js',
     'options.js',
-    'livereload.js'
+    'livereload.js',
+    'contentscript.js'
   ]
 
   let tasks = files.map( file => {
-    return browserify({
-      entries: 'src/scripts/' + file,
-      debug: true
-    })
-    .transform('babelify', { presets: ['es2015'] })
-    .transform(preprocessify, {
-      includeExtensions: ['.js'],
-      context: context
-    })
-    .bundle()
-    .pipe(source(file))
-    .pipe(buffer())
-    .pipe(gulpif(production, $.uglify({
-      "mangle": false,
-      "output": {
-        "ascii_only": true
-      }
-    })))
-    .pipe(gulp.dest(`build/${target}/scripts`));
+    return gulp
+    .src('src/scripts/' + file)
+    .pipe(gulpCopy(`build/${target}/scripts`, { prefix: 3 }))
   });
 
   return merge.apply(null, tasks);

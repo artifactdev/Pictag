@@ -1,0 +1,15 @@
+@import "modules/variables";
+
+
+#hashit-frame {
+  position: absolute;
+  width: 500px;
+  max-width: 100vw;
+  top: 150px;
+  height: 260px;
+  left: calc(50% - 250px);
+  z-index: 10000;
+  border: 0;
+  box-shadow: 1px 1px 5px #000;
+  border-radius: 6px;
+}

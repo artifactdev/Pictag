@@ -24,53 +24,16 @@ function checkStoredSettings(storedSettings) {
 function getHashtags(info, storedSettings) {
     var imageURL = info.srcUrl;
 
-    if ( !window.XMLHttpRequest ) return;
-
-	// Create new request
-    var request = new XMLHttpRequest();
-
-	// Setup callbacks
-	request.onreadystatechange = function () {
-
-		// If the request is compvare
-		if(request.readyState === 4 && request.status === 200) {
-            buildTagArray(request.responseText);
-        }
-
-	};
-
-    // Get the HTML
-    request.open( 'GET', 'https://api.imagga.com/v2/tags?image_url='+encodeURIComponent(imageURL) );
-    request.setRequestHeader("Authorization", "Basic " + btoa(storedSettings.apiKey + ":" + storedSettings.apiSecret));
-	request.send();
-}
-
-function buildTagArray(data) {
-    var dataObject = JSON.parse(data);
-    var dataTags = dataObject.result.tags;
-    var tags = [];
-
-    for (var index = 0; index < dataTags.length; index++) {
-        if (index === 30) { break; }
-        var tagObject = dataTags[index];
-
-        tags.push('#'+tagObject.tag.en);
-    }
-
-    parseTags(tags);
-}
-
-function parseTags(tags) {
-
     browser.storage.local.set({
-        tags: tags
+      url: imageURL
     }, function () {
-      console.log('TAGS ARE SET')
         browser.tabs.executeScript({
             file: "/scripts/contentscript.js"
         });
     });
+
 }
+
 
 
 function onExecuted(result) {

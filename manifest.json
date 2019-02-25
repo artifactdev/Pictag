@@ -22,7 +22,7 @@
         "http://*/*",
         "https://*/*"
       ],
-      "css": ["styles/result.css"],
+      "css": ["styles/iframe.css"],
       "run_at": "document_end",
       "all_frames": true
     }

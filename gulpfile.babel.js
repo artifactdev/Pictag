@@ -145,7 +145,8 @@ function buildJS(target) {
     'background.js',
     'options.js',
     'livereload.js',
-    'contentscript.js'
+    'contentscript.js',
+    'result.js'
   ]
 
   let tasks = files.map( file => {

@@ -11,7 +11,8 @@ saveOptions.onclick = () => {
 		apiKey: $('#apiKey').value,
     apiSecret: $('#apiSecret').value,
     results: $('#resultAmount').value,
-    addHashtag: $('#addHash').checked
+    addHashtag: $('#addHash').checked,
+    seperator: $('#seperator').value
 	};
 
     browser.storage.sync.set(storedSettings);
@@ -31,6 +32,11 @@ function updateUI(storedSettings) {
       $('#addHash').checked = true;
     } else {
       $('#addHash').checked = storedSettings.addHashtag;
+    }
+    if (!storedSettings.seperator) {
+      $('#seperator').value = ' ';
+    } else {
+      $('#seperator').value = storedSettings.seperator;
     }
   } else {
     $('#resultAmount').value = 30;

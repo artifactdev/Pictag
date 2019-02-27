@@ -81,7 +81,8 @@ var appendTags = function (tags) {
   for (let index = 0; index < tags.length; index++) {
     const tag = tags[index];
     console.log(tag);
-    textarea.value = textarea.value + ' ' + tag;
+    const seperator = storedSettings.seperator;
+    textarea.value = textarea.value + '' + tag + seperator;
   }
 
   document.getElementById('loader').classList.add('hidden');

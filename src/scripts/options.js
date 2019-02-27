@@ -9,7 +9,6 @@ saveOptions.onclick = () => {
   /* Make sure all input valid */
 	const storedSettings = {
 		apiKey: $('#apiKey').value,
-    apiSecret: $('#apiSecret').value,
     results: $('#resultAmount').value,
     addHashtag: $('#addHash').checked,
     seperator: $('#seperator').value
@@ -22,7 +21,6 @@ function updateUI(storedSettings) {
   console.log('update ui')
   if (storedSettings) {
     $('#apiKey').value = storedSettings.apiKey;
-    $('#apiSecret').value = storedSettings.apiSecret;
     if (!storedSettings.results) {
       $('#resultAmount').value = 30;
     } else {

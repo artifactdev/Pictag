@@ -31,16 +31,29 @@ var getHashtags = function (imageURL) {
 
   };
 
+  var requestData = {
+    "inputs": [
+      {
+        "data": {
+          "image": {
+            "url": imageURL
+          }
+        }
+      }
+    ]
+  };
+
   // Get the HTML
-  request.open('GET', 'https://api.imagga.com/v2/tags?image_url=' + encodeURIComponent(imageURL));
-  request.setRequestHeader("Authorization", "Basic " + btoa(storedSettings.apiKey + ":" + storedSettings.apiSecret));
-  request.send();
+  request.open('POST', 'https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs');
+  request.setRequestHeader("Authorization", "Key " + storedSettings.apiKey);
+  request.setRequestHeader("Content-Type", "application/json");
+  request.send(JSON.stringify(requestData));
 }
 
 
 function buildTagArray(data) {
   var dataObject = JSON.parse(data);
-  var dataTags = dataObject.result.tags;
+  var dataTags = dataObject.outputs[0].data.concepts;
   var tags = [];
 
   for (var index = 0; index < dataTags.length; index++) {
@@ -52,7 +65,9 @@ function buildTagArray(data) {
       beforeTag = '#';
     }
 
-    tags.push(beforeTag + tagObject.tag.en);
+    var tagString = tagObject.name;
+    tagString = tagString.replace(/ +/g, "");
+    tags.push(beforeTag + tagString);
   }
 
   parseTags(tags);

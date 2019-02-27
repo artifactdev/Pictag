@@ -9,7 +9,6 @@ browser.storage.local.get('url', function (url) {
 
 function setStoredsettings(settings) {
   storedSettings = settings;
-  window.parent.postMessage("Hello From IFrame", "*");
   getHashtags(imageURL);
 }
 

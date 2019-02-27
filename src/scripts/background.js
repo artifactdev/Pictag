@@ -26,7 +26,7 @@ function getHashtags(info, storedSettings) {
 
     console.log(storedSettings.apiKey.length, storedSettings.apiKey)
 
-    if (storedSettings.apiKey.length === 0 || storedSettings.apiSecret.length === 0) {
+    if (storedSettings.apiKey.length === 0) {
       browser.runtime.openOptionsPage()
     }
 

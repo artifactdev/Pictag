@@ -31,7 +31,7 @@ var manifest = {
   firefox: {
     "applications": {
       "gecko": {
-        "id": "my-app-id@mozilla.org"
+        "id": "pictag@art-ifact.de"
       }
     }
   }

@@ -24,6 +24,12 @@ function checkStoredSettings(storedSettings) {
 function getHashtags(info, storedSettings) {
     var imageURL = info.srcUrl;
 
+    console.log(storedSettings.apiKey.length, storedSettings.apiKey)
+
+    if (storedSettings.apiKey.length === 0 || storedSettings.apiSecret.length === 0) {
+      browser.runtime.openOptionsPage()
+    }
+
     browser.storage.local.set({
       url: imageURL
     }, function () {

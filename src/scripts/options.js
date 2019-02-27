@@ -9,7 +9,8 @@ saveOptions.onclick = () => {
 	/* Make sure all input valid */
 	const storedSettings = {
 		apiKey: $('#apiKey').value,
-		apiSecret: $('#apiSecret').value
+    apiSecret: $('#apiSecret').value,
+    results: $('#resultAmount').value
 	};
 
     browser.storage.sync.set(storedSettings);
@@ -20,6 +21,13 @@ function updateUI(storedSettings) {
   if (storedSettings) {
     $('#apiKey').value = storedSettings.apiKey;
     $('#apiSecret').value = storedSettings.apiSecret;
+    if (!storedSettings.results) {
+      $('#resultAmount').value = 30;
+    } else {
+      $('#resultAmount').value = storedSettings.results;
+    }
+  } else {
+    $('#resultAmount').value = 30;
   }
 }
 

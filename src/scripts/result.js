@@ -44,7 +44,7 @@ function buildTagArray(data) {
   var tags = [];
 
   for (var index = 0; index < dataTags.length; index++) {
-    if (index === 30) { break; }
+    if (index === parseInt(storedSettings.results)) { break; }
     var tagObject = dataTags[index];
 
     tags.push('#' + tagObject.tag.en);

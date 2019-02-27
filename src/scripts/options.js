@@ -6,11 +6,12 @@ var $el = document.createElement.bind(document);
 var saveOptions = $('#saveOptions');
 
 saveOptions.onclick = () => {
-	/* Make sure all input valid */
+  /* Make sure all input valid */
 	const storedSettings = {
 		apiKey: $('#apiKey').value,
     apiSecret: $('#apiSecret').value,
-    results: $('#resultAmount').value
+    results: $('#resultAmount').value,
+    addHashtag: $('#addHash').checked
 	};
 
     browser.storage.sync.set(storedSettings);
@@ -25,6 +26,11 @@ function updateUI(storedSettings) {
       $('#resultAmount').value = 30;
     } else {
       $('#resultAmount').value = storedSettings.results;
+    }
+    if (!storedSettings.addHashtag) {
+      $('#addHash').checked = true;
+    } else {
+      $('#addHash').checked = storedSettings.addHashtag;
     }
   } else {
     $('#resultAmount').value = 30;

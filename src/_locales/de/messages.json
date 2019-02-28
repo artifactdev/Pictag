@@ -1,0 +1,37 @@
+{
+  "appName": {
+    "message": "Pictag",
+    "description": "Bekomme passende Hashtags zu einem Bild."
+  },
+  "appDescription": {
+    "message": "Bekomme Hashtags mit nur einen Rechts-Klick!",
+    "description": "Bei einem Rechtsklick auf ein Bild und der Auswahl >>Hashtags generieren<<, wird das Bild Analysiert und passende Hashtags angezeigt."
+  },
+  "copytoclipboard": {
+    "message": "In Zwischenablage kopieren"
+  },
+  "generatehashtags": {
+    "message": "Hashtags generieren"
+  },
+  "analysing": {
+    "message": "Bild wird analysiert"
+  },
+  "numberofresults": {
+    "message": "Maximale Anzahl an Ergebnissen"
+  },
+  "addhashtotag": {
+    "message": "Füge den Tags # hinzu"
+  },
+  "seperatetags": {
+    "message": "Trenne Tags mit"
+  },
+  "save": {
+    "message": "Speichern"
+  },
+  "info1": {
+    "message": "Damit die Erweiterung funktioniert benötigst du einen freien Account von "
+  },
+  "info2": {
+    "message": ", trage den Clarifai API-Key dann in das Eingabefeld ein"
+  }
+}

@@ -9,7 +9,13 @@ browser.storage.local.get('url', function (url) {
 
 function setStoredsettings(settings) {
   storedSettings = settings;
+  setStrings();
   getHashtags(imageURL);
+}
+
+var setStrings = function() {
+  document.getElementById('analysing').textContent = browser.i18n.getMessage('analysing');
+  document.getElementById('hashitCopy').textContent = browser.i18n.getMessage('copytoclipboard');
 }
 
 var getHashtags = function (imageURL) {

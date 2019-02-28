@@ -1,6 +1,6 @@
 // Set up context menu for images, always get whole storage
 function createContextMenu() {
-	var title =  'Get Hashtags'; //browser.i18n.getMessage('contextMenuTitle')
+  var title =  browser.i18n.getMessage('generatehashtags');
 
 	browser.contextMenus.create({
         id: 'getHash',

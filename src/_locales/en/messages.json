@@ -4,11 +4,34 @@
     "description": "Get Hastags for Image."
   },
   "appDescription": {
-    "message": "Boilerplate for building cross browser extensions",
-    "description": "The description of the extension."
+    "message": "Get Hashtags by just a right-click!",
+    "description": "By right-clicking on an Image on any page, click >>Get Hashtags<< and the image will be analysed and matching Hashtags will be generated."
   },
-  "btnTooltip": {
-    "message": "Ext Starter",
-    "description": "Tooltip for the button."
+  "copytoclipboard": {
+    "message": "Copy to clipboard"
+  },
+  "generatehashtags": {
+    "message": "Get Hashtags"
+  },
+  "analysing": {
+    "message": "Analysing image"
+  },
+  "numberofresults": {
+    "message": "Number of results"
+  },
+  "addhashtotag": {
+    "message": "Add # to the tags"
+  },
+  "seperatetags": {
+    "message": "Seperate tags by"
+  },
+  "save": {
+    "message": "save"
+  },
+  "info1": {
+    "message": "For a working extention you need to create a free account on "
+  },
+  "info2": {
+    "message": " and enter the accountcredentials here"
   }
 }

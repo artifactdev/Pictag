@@ -17,8 +17,19 @@ saveOptions.onclick = () => {
     browser.storage.sync.set(storedSettings);
 };
 
+function setStrings() {
+  document.getElementById('labelResultAmount').textContent = browser.i18n.getMessage('numberofresults');
+  document.getElementById('labelAddHashtag').textContent = browser.i18n.getMessage('addhashtotag');
+  document.getElementById('labelSeperateTags').textContent = browser.i18n.getMessage('seperatetags');
+  document.getElementById('saveOptions').textContent = browser.i18n.getMessage('save');
+  document.getElementById('info1').textContent = browser.i18n.getMessage('info1');
+  document.getElementById('info2').textContent = browser.i18n.getMessage('info2');
+
+}
+
 function updateUI(storedSettings) {
   console.log('update ui')
+  setStrings();
   if (storedSettings) {
     $('#apiKey').value = storedSettings.apiKey;
     if (!storedSettings.results) {

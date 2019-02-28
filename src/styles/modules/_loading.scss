@@ -66,3 +66,14 @@
         transform: translate(19px, 0);
     }
 }
+
+#analysing {
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: calc(50% + 54px);
+  text-align: center;
+  font-family: Verdana;
+  color: $blue-grey;
+  fonz-size: 1.5rem;
+}
